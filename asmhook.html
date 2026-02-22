@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>asmhook</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+
+<style>
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Courier Prime', monospace;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    padding: 5px 12px;
+    margin: 6px 0;
+    cursor: pointer;
+    width: 100px;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+.section {
+    display: none;
+    position: absolute;
+    top: 5%;
+    width: 100%;
+}
+
+.song {
+    margin: 30px 0;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    margin: 4px 0;
+}
+
+.link-btn:hover {
+    text-decoration: underline;
+}
+
+.frame {
+    display: none;
+    margin-top: 10px;
+}
+
+iframe {
+    width: 320px;
+    height: 180px;
+    border: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="home" id="home">
+    <h1>asmhook</h1>
+    <button onclick="showSection('music')">music</button>
+    <button onclick="showSection('shop')">shop</button>
+    <button onclick="window.location.href='play.html'">play</button>
+</div>
+
+<!-- MUSIC -->
+<div id="music" class="section">
+    <h1>music</h1>
+
+    <!-- SONG 1 -->
+    <div class="song">
+        <p>DUMMY</p>
+
+        <button class="link-btn" onclick="toggleFrame('listen1')">listen</button>
+        <div id="listen1" class="frame">
+            <!-- Replace with your FFM embed link -->
+            <iframe src="YOUR_FFM_EMBED_LINK"></iframe>
+        </div>
+
+        <button class="link-btn" onclick="toggleFrame('watch1')">watch</button>
+        <div id="watch1" class="frame">
+            <!-- Replace VIDEO_ID -->
+            <iframe src="https://www.youtube.com/embed/swWuTtf97BU"></iframe>
+        </div>
+    </div>
+
+    <!-- SONG 2 -->
+    <div class="song">
+        <p>song title 2</p>
+
+        <button class="link-btn" onclick="toggleFrame('listen2')">listen</button>
+        <div id="listen2" class="frame">
+            <iframe src="YOUR_FFM_EMBED_LINK"></iframe>
+        </div>
+
+        <button class="link-btn" onclick="toggleFrame('watch2')">watch</button>
+        <div id="watch2" class="frame">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe>
+        </div>
+    </div>
+
+    <button onclick="goHome()">back</button>
+</div>
+
+<!-- SHOP -->
+<div id="shop" class="section">
+    <h1>shop</h1>
+    <img src="YOUR_TSHIRT_IMAGE.jpg" width="200">
+    <br>
+    <button style="margin-top:10px;">buy</button>
+    <br><br>
+    <button onclick="goHome()">back</button>
+</div>
+
+<script>
+function showSection(section) {
+    document.getElementById("home").style.display = "none";
+    document.getElementById(section).style.display = "block";
+}
+
+function goHome() {
+    document.getElementById("home").style.display = "flex";
+    document.getElementById("music").style.display = "none";
+    document.getElementById("shop").style.display = "none";
+}
+
+function toggleFrame(id) {
+    var frame = document.getElementById(id);
+    if (frame.style.display === "none" || frame.style.display === "") {
+        frame.style.display = "block";
+    } else {
+        frame.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
